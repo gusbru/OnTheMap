@@ -7,11 +7,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="VMp-Uj-QYD">
             <objects>
-                <navigationController id="Khk-sM-enR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="vu2-eT-AuW"/>
+                <navigationController id="Khk-sM-enR" customClass="MapNavigationController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" image="icon_mapview-deselected" selectedImage="icon_mapview-deselected" id="vu2-eT-AuW"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PsD-5m-ys2">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="2677" y="-532"/>
         </scene>
-        <!--View Controller-->
+        <!--On The Map-->
         <scene sceneID="bNu-bx-Hae">
             <objects>
-                <viewController id="byQ-a5-ZI7" sceneMemberID="viewController">
+                <viewController id="byQ-a5-ZI7" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b6G-0T-ppX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,17 +45,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g3r-KZ-OBb"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FFG-6I-fCU"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="FFG-6I-fCU">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="icon_pin" id="S1N-la-5mX"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="icon_refresh" id="wlL-vh-orJ"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RbA-X7-cPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3774" y="-532"/>
         </scene>
-        <!--Item-->
+        <!--Friends-->
         <scene sceneID="sx5-8B-a1k">
             <objects>
                 <navigationController id="nVP-fc-q1e" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="nIO-Qg-dgf"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="icon_listview-deselected" selectedImage="icon_listview-deselected" id="nIO-Qg-dgf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gy0-Va-6JO">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -68,16 +71,16 @@
             </objects>
             <point key="canvasLocation" x="2677" y="396"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Friends Table View Controller-->
         <scene sceneID="8bQ-af-BWq">
             <objects>
-                <tableViewController id="OqS-fo-JHa" sceneMemberID="viewController">
+                <tableViewController id="OqS-fo-JHa" customClass="FriendsTableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5vP-nh-TVJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="d84-9Q-mdu">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="d84-9Q-mdu" customClass="FriendTableViewCell" customModule="OnTheMap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d84-9Q-mdu" id="qfj-Vx-CIo">
@@ -108,20 +111,20 @@
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Login" id="BYZ-38-t0r" customClass="ViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" title="Login" id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-u" translatesAutoresizingMaskIntoConstraints="NO" id="8fp-IJ-rZ6">
-                                <rect key="frame" x="87" y="213" width="240" height="128"/>
+                                <rect key="frame" x="87" y="169" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="MVK-PV-FXg"/>
                                     <constraint firstAttribute="height" constant="128" id="YbY-ZS-GLQ"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5i-XL-vN0">
-                                <rect key="frame" x="113" y="379" width="188" height="33"/>
+                                <rect key="frame" x="113" y="335" width="188" height="33"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Login to Udacity">
                                         <attributes>
@@ -134,17 +137,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="VuP-bq-SuZ">
-                                <rect key="frame" x="20" y="431" width="374" height="34"/>
+                                <rect key="frame" x="20" y="387" width="374" height="34"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="LX4-z3-9Y4">
-                                <rect key="frame" x="20" y="473" width="374" height="34"/>
+                                <rect key="frame" x="20" y="429" width="374" height="34"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l2w-NR-mew">
-                                <rect key="frame" x="20" y="515" width="374" height="37"/>
+                                <rect key="frame" x="20" y="471" width="374" height="37"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="Login">
@@ -155,6 +158,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="LoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="36K-JK-K08"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -176,15 +182,19 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="GrM-fI-iwa"/>
+                    <connections>
+                        <outlet property="EmailTextField" destination="VuP-bq-SuZ" id="cJQ-Ik-4ym"/>
+                        <outlet property="PasswordTextField" destination="LX4-z3-9Y4" id="nO2-2M-P71"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="720" y="51"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--TabBarController-->
         <scene sceneID="Vyo-qy-em9">
             <objects>
-                <tabBarController id="LYQ-Ya-hmU" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" title="TabBarController" id="LYQ-Ya-hmU" customClass="TabBarViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GvP-oe-oPj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -202,9 +212,8 @@
         <!--Navigation Controller-->
         <scene sceneID="X5Z-K5-3Xo">
             <objects>
-                <navigationController id="g4v-lL-GRa" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="g4v-lL-GRa" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ams-VS-WoM">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -217,6 +226,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_listview-deselected" width="75" height="50"/>
+        <image name="icon_mapview-deselected" width="75" height="50"/>
+        <image name="icon_pin" width="24" height="24"/>
+        <image name="icon_refresh" width="24" height="24"/>
         <image name="logo-u" width="62" height="62"/>
     </resources>
 </document>
