@@ -9,7 +9,11 @@
 import UIKit
 
 class FriendTableViewCell: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var studentNameLabel: UILabel!
+    var mediaURL: String?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +24,20 @@ class FriendTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    @IBAction func studentURLButton(_ sender: Any) {
+        let app = UIApplication.shared
+        guard let mediaURL = mediaURL else {
+            print("no given URL")
+            return
+            
+        }
+        
+        if let urlMedia = URL(string: mediaURL) {
+            app.open(urlMedia)
+        } else {
+            print("not valid url")
+        }
+    }
+    
 }

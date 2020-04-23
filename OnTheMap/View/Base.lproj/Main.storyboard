@@ -167,21 +167,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="d84-9Q-mdu" customClass="FriendTableViewCell" customModule="OnTheMap" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="d84-9Q-mdu" customClass="FriendTableViewCell" customModule="OnTheMap" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="d84-9Q-mdu" id="qfj-Vx-CIo">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elw-KZ-Gzz">
+                                            <rect key="frame" x="62" y="13" width="344" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="512-CU-C15">
+                                            <rect key="frame" x="20" y="5" width="34" height="34.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="34" id="04I-14-AlB"/>
+                                                <constraint firstAttribute="height" constant="34" id="6ez-Zs-aHF"/>
+                                            </constraints>
+                                            <state key="normal" image="icon_pin"/>
+                                            <connections>
+                                                <action selector="studentURLButton:" destination="d84-9Q-mdu" eventType="touchUpInside" id="gj3-9n-W2t"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="elw-KZ-Gzz" firstAttribute="top" secondItem="qfj-Vx-CIo" secondAttribute="top" constant="13" id="3H3-D0-pzR"/>
+                                        <constraint firstItem="512-CU-C15" firstAttribute="leading" secondItem="qfj-Vx-CIo" secondAttribute="leading" constant="20" id="59y-cB-U5p"/>
+                                        <constraint firstItem="512-CU-C15" firstAttribute="top" secondItem="qfj-Vx-CIo" secondAttribute="top" constant="5" id="7Fk-pW-5Fp"/>
+                                        <constraint firstAttribute="trailing" secondItem="elw-KZ-Gzz" secondAttribute="trailing" constant="8" id="LoY-Im-Zf5"/>
+                                        <constraint firstAttribute="bottom" secondItem="512-CU-C15" secondAttribute="bottom" constant="5" id="apV-re-wCb"/>
+                                        <constraint firstItem="elw-KZ-Gzz" firstAttribute="leading" secondItem="512-CU-C15" secondAttribute="trailing" constant="8" id="ntY-sf-jiE"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9h2-oS-MF3">
-                                <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9h2-oS-MF3" id="jbe-1y-GRd">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="studentNameLabel" destination="elw-KZ-Gzz" id="1hl-bk-UjV"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -193,7 +215,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2m-jg-DAL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3775" y="396"/>
+            <point key="canvasLocation" x="3773.913043478261" y="395.75892857142856"/>
         </scene>
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
@@ -314,6 +336,7 @@
     </scenes>
     <resources>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="icon_pin" width="24" height="24"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="logo-u" width="62" height="62"/>
         <image name="map" catalog="system" width="128" height="113"/>
