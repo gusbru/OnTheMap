@@ -35,12 +35,17 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sHp-sy-SCH">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </mapView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="3LP-S4-JMU">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="g3r-KZ-OBb" firstAttribute="bottom" secondItem="sHp-sy-SCH" secondAttribute="bottom" id="NQc-bc-1G3"/>
                             <constraint firstItem="sHp-sy-SCH" firstAttribute="top" secondItem="g3r-KZ-OBb" secondAttribute="top" id="Pz8-1I-TtT"/>
+                            <constraint firstItem="3LP-S4-JMU" firstAttribute="centerX" secondItem="b6G-0T-ppX" secondAttribute="centerX" id="Z1A-wA-pcT"/>
                             <constraint firstItem="sHp-sy-SCH" firstAttribute="leading" secondItem="g3r-KZ-OBb" secondAttribute="leading" id="lUA-oA-Ym1"/>
+                            <constraint firstItem="3LP-S4-JMU" firstAttribute="centerY" secondItem="b6G-0T-ppX" secondAttribute="centerY" id="mag-7r-pz8"/>
                             <constraint firstItem="g3r-KZ-OBb" firstAttribute="trailing" secondItem="sHp-sy-SCH" secondAttribute="trailing" id="ndy-pb-ZKI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g3r-KZ-OBb"/>
@@ -59,7 +64,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addPinButton" destination="S1N-la-5mX" id="1KE-cg-NHn"/>
+                        <outlet property="loadingSpinner" destination="3LP-S4-JMU" id="IzB-QY-uEY"/>
                         <outlet property="mapView" destination="sHp-sy-SCH" id="wtA-cy-aIw"/>
+                        <outlet property="reloadButton" destination="wlL-vh-orJ" id="IsZ-7v-FUS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RbA-X7-cPl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

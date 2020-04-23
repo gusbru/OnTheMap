@@ -13,6 +13,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
 
     @IBOutlet weak var addPinButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var reloadButton: UIBarButtonItem!
+    @IBOutlet weak var loadingSpinner: UIActivityIndicatorView!
+    
     
     var isAddingPin: Bool = false
     
@@ -26,6 +29,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
         // tap
         let singleTapRecognize = UILongPressGestureRecognizer(target: self, action: #selector(handleTap(gestureRecognizer:)))
         mapView.addGestureRecognizer(singleTapRecognize)
+        
+        // load students
+        fetchStudentList()
     }
     
 
@@ -80,8 +86,55 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
     
     
     @IBAction func reloadMap(_ sender: Any) {
+        
+        // clean annotations
+        mapView.removeAnnotations(mapView.annotations)
+        
+        fetchStudentList()
+        
+        
     }
     
+    private func fetchStudentList() {
+        StudentClient.getStudentList(completion: handlePopulateMap(response:error:))
+    }
+    
+    
+    
+    private func handlePopulateMap(response: StudentInformationResponse?, error: Error?) {
+        if let response = response {
+            loadingSpinner.startAnimating()
+            mapView.alpha = CGFloat(0.2)
+            
+            StudentModel.studentsList = response.studentsList
+            
+            // populate the map
+            for student in StudentModel.studentsList {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: student.latitude)!, longitude: CLLocationDegrees(exactly: student.longitude)!)
+                annotation.title = "\(student.firstName) \(student.lastName)"
+                annotation.subtitle = "\(student.mediaURL)"
+                
+                self.mapView.addAnnotation(annotation)
+            }
+            
+            loadingSpinner.stopAnimating()
+            mapView.alpha = CGFloat(1.0)
+        }
+        
+        if let error = error {
+            // TODO: Show error
+            print(error)
+            self.loadingSpinner.stopAnimating()
+            self.showAlertFailure(message: "Unable to Download Students Locations")
+        }
+    }
+    
+    private func showAlertFailure(message: String) {
+        let alertViewController = UIAlertController(title: "Login Error", message: message, preferredStyle: .alert)
+        alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertViewController, animated: true, completion: nil)
+    }
     
     // MARK: - Gestures
     
