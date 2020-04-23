@@ -18,6 +18,7 @@
 		751E77D6244FF2F600BDF84E /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751E77D5244FF2F600BDF84E /* FriendTableViewCell.swift */; };
 		751E77D8244FF69600BDF84E /* MapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751E77D7244FF69600BDF84E /* MapNavigationController.swift */; };
 		751E77DA244FF7BF00BDF84E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751E77D9244FF7BF00BDF84E /* TabBarViewController.swift */; };
+		75688B392451418D00B302AF /* AddNewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75688B382451418D00B302AF /* AddNewLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		751E77D5244FF2F600BDF84E /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
 		751E77D7244FF69600BDF84E /* MapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNavigationController.swift; sourceTree = "<group>"; };
 		751E77D9244FF7BF00BDF84E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		75688B382451418D00B302AF /* AddNewLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				751E77D5244FF2F600BDF84E /* FriendTableViewCell.swift */,
 				751E77D7244FF69600BDF84E /* MapNavigationController.swift */,
 				751E77D9244FF7BF00BDF84E /* TabBarViewController.swift */,
+				75688B382451418D00B302AF /* AddNewLocationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75688B392451418D00B302AF /* AddNewLocationViewController.swift in Sources */,
 				751E77DA244FF7BF00BDF84E /* TabBarViewController.swift in Sources */,
 				751E77BC244FE83C00BDF84E /* LoginViewController.swift in Sources */,
 				751E77D8244FF69600BDF84E /* MapNavigationController.swift in Sources */,
