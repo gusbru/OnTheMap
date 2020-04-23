@@ -96,6 +96,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
     }
     
     private func fetchStudentList() {
+        
+        setLoadingStatus(isLoading: true)
         StudentClient.getStudentList(completion: handlePopulateMap(response:error:))
     }
     
@@ -103,8 +105,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
     
     private func handlePopulateMap(response: StudentInformationResponse?, error: Error?) {
         if let response = response {
-            loadingSpinner.startAnimating()
-            mapView.alpha = CGFloat(0.2)
             
             StudentModel.studentsList = response.studentsList
             
@@ -118,15 +118,25 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
                 self.mapView.addAnnotation(annotation)
             }
             
-            loadingSpinner.stopAnimating()
-            mapView.alpha = CGFloat(1.0)
+            setLoadingStatus(isLoading: false)
         }
         
         if let error = error {
-            // TODO: Show error
-            print(error)
+            setLoadingStatus(isLoading: false)
+            self.showAlertFailure(message: error.localizedDescription)
+        }
+        
+    }
+    
+    private func setLoadingStatus(isLoading: Bool) {
+        if (isLoading) {
+            self.loadingSpinner.startAnimating()
+            self.mapView.alpha = CGFloat(0.2)
+            navigationController?.tabBarController?.tabBar.isHidden = true
+        } else {
             self.loadingSpinner.stopAnimating()
-            self.showAlertFailure(message: "Unable to Download Students Locations")
+            self.mapView.alpha = CGFloat(1.0)
+            navigationController?.tabBarController?.tabBar.isHidden = false
         }
     }
     
