@@ -383,6 +383,9 @@
                     <connections>
                         <outlet property="EmailTextField" destination="VuP-bq-SuZ" id="cJQ-Ik-4ym"/>
                         <outlet property="PasswordTextField" destination="LX4-z3-9Y4" id="nO2-2M-P71"/>
+                        <outlet property="loadingSpinner" destination="5PV-P9-VIy" id="F8m-Tg-mj4"/>
+                        <outlet property="loginButton" destination="l2w-NR-mew" id="vNn-XX-5Qh"/>
+                        <outlet property="signUpButton" destination="Tcv-bo-dU4" id="cgC-X2-MF6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
