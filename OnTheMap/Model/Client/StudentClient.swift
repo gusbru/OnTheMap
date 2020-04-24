@@ -23,7 +23,7 @@ class StudentClient {
         var stringVaue: String {
             switch self {
             case .getStudentsLocation:
-                return "\(Endpoints.base)/StudentLocation?order=-updatedAt"
+                return "\(Endpoints.base)/StudentLocation?order=-updatedAt&limit=100"
             }
         }
         
