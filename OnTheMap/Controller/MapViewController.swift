@@ -35,16 +35,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
 
     
@@ -79,6 +69,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
     
     @IBAction func insertPin(_ sender: Any) {
         let addNewLocationViewController = self.storyboard?.instantiateViewController(identifier: "AddNewLocation") as! AddNewLocationViewController
+        
+        addNewLocationViewController.parentMapView = self.mapView
         present(addNewLocationViewController, animated: true, completion: nil)
     }
     
@@ -101,6 +93,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
         StudentClient.getStudentList(completion: handlePopulateMap(response:error:))
     }
     
+    class func addAnnotation(student: Student, mapView: MKMapView) {
+        let annotation = MKPointAnnotation()
+        
+        annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: student.latitude)!, longitude: CLLocationDegrees(exactly: student.longitude)!)
+        
+        annotation.title = "\(student.firstName) \(student.lastName)"
+        annotation.subtitle = "\(student.mediaURL)"
+        
+        mapView.addAnnotation(annotation)
+    }
     
     
     private func handlePopulateMap(response: StudentInformationResponse?, error: Error?) {
@@ -110,12 +112,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
             
             // populate the map
             for student in StudentModel.studentsList {
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: student.latitude)!, longitude: CLLocationDegrees(exactly: student.longitude)!)
-                annotation.title = "\(student.firstName) \(student.lastName)"
-                annotation.subtitle = "\(student.mediaURL)"
-                
-                self.mapView.addAnnotation(annotation)
+                MapViewController.addAnnotation(student: student, mapView: self.mapView)
             }
             
             setLoadingStatus(isLoading: false)

@@ -21,6 +21,8 @@ class AddNewLocationViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var isLoadingSpinner: UIActivityIndicatorView!
     
     var originalMapRegion: MKCoordinateRegion?
+    var studentCoordinate: CLLocationCoordinate2D?
+    var parentMapView: MKMapView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +59,9 @@ class AddNewLocationViewController: UIViewController, MKMapViewDelegate {
 
                     let location = place[0]
                     let annotation = MKPointAnnotation()
-                    annotation.coordinate = CLLocationCoordinate2D(latitude: location.location!.coordinate.latitude, longitude: location.location!.coordinate.longitude)
+                    let coordinate = CLLocationCoordinate2D(latitude: location.location!.coordinate.latitude, longitude: location.location!.coordinate.longitude)
+                    self.studentCoordinate = coordinate
+                    annotation.coordinate = coordinate
                     annotation.title = "\(address)"
                     self.mapView.addAnnotation(annotation)
                     let coordinateRegion = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: CLLocationDistance(exactly: 5000)!, longitudinalMeters: CLLocationDistance(exactly: 5000)!)
@@ -67,7 +71,6 @@ class AddNewLocationViewController: UIViewController, MKMapViewDelegate {
                     self.selectedLocationButton.isHidden = false
                     self.selectedLocationLabel.isHidden = false
                     self.selectedLocationLabel.text = address
-                    print(place[0])
                     self.inputTextField.text = ""
                     self.findOnMapButton.isHidden = true
                     self.submitButton.isEnabled = true
@@ -90,10 +93,32 @@ class AddNewLocationViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func submitButton(_ sender: Any) {
+        guard let mediaURL = inputTextField.text else {
+            showAlertFailure(message: "Give a valid Link")
+            return
+        }
+        
+        guard let studentCoordinate = studentCoordinate else {
+            showAlertFailure(message: "Give a location")
+            return
+        }
+        
+        StudentClient.postLocation(coordinate: studentCoordinate, mapString: selectedLocationLabel.text!, mediaURL: mediaURL) { (success, error) in
+            
+            if !success {
+                self.showAlertFailure(message: error!.localizedDescription)
+                return
+            }
+            
+            // TODO: need to reload the map
+            MapViewController.addAnnotation(student: StudentModel.studentsList.last!, mapView: self.parentMapView!)
+            self.parentMapView!.reloadInputViews()
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     private func showAlertFailure(message: String) {
-        let alertViewController = UIAlertController(title: "Location Error", message: message, preferredStyle: .alert)
+        let alertViewController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alertViewController, animated: true, completion: nil)
     }

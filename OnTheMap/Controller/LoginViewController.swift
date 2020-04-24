@@ -43,6 +43,7 @@ class LoginViewController: UIViewController {
         if !success {
             // display error
             showErrorAlert(message: error?.localizedDescription ?? "Something went wrong :(")
+            setupLogin(isLoading: false)
             return
         }
         

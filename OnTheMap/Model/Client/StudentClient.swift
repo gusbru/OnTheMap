@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 class StudentClient {
     
@@ -25,6 +26,7 @@ class StudentClient {
         
         case getStudentsLocation
         case login
+        case postLocation
         
         var stringVaue: String {
             switch self {
@@ -32,6 +34,8 @@ class StudentClient {
                 return "\(Endpoints.base)/StudentLocation?order=-updatedAt&limit=100"
             case .login:
                 return "\(Endpoints.base)/session"
+            case .postLocation:
+                return "\(Endpoints.base)/StudentLocation"
             }
         }
         
@@ -57,8 +61,6 @@ class StudentClient {
         let userInfo = Udacity(username: username, password: password)
         let loginInfo = LoginRequest(udacity: userInfo)
         
-//        print(loginInfo)
-        
         taskForPOSTRequest(url: Endpoints.login.url, body: loginInfo, reponseType: LoginResponse.self) { (response, error) in
             if let response = response {
                 Auth.key = response.account.key
@@ -70,6 +72,30 @@ class StudentClient {
                 completion(false, error)
             }
         }
+    }
+    
+    class func postLocation(coordinate: CLLocationCoordinate2D, mapString: String, mediaURL: String, completion: @escaping (Bool, Error?) -> Void) {
+        
+        let firstName = "firstName"
+        let lastName = "lastName"
+        
+        let userInfo = PostLocationRequest(uniqueKey: Auth.key, firstName: firstName, lastName: lastName, mapString: mapString, mediaURL: mediaURL, latitude: coordinate.latitude, longitude: coordinate.longitude)
+        
+        
+        taskForPOSTRequest2(url: Endpoints.postLocation.url, body: userInfo, reponseType: PostLocationResponse.self) { (response, error) in
+            if let response = response {
+                
+                StudentModel.studentsList.append(Student(firstName: firstName, lastName: lastName, longitude: coordinate.longitude, latitude: coordinate.latitude, mapString: mapString, mediaURL: mediaURL, uniqueKey: Auth.key, objectId: response.objectId, createdAt: response.createdAt, updatedAt: response.createdAt))
+             
+                completion(true, nil)
+            
+            }
+            
+            if let error = error {
+                completion(false, error)
+            }
+        }
+        
     }
     
     
@@ -105,7 +131,6 @@ class StudentClient {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let encoder = JSONEncoder()
         do {
@@ -139,6 +164,58 @@ class StudentClient {
                 do {
                     let newData = data.subdata(in: 5..<data.count)
                     let errorObject = try decoder.decode(ErrorResponse.self, from: newData)
+                    DispatchQueue.main.async {
+                        completion(nil, errorObject)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
+                }
+            }
+        }
+        
+        task.resume()
+    }
+    
+    private class func taskForPOSTRequest2<RequestType: Encodable, ResponseType: Decodable>(url: URL, body: RequestType, reponseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let encoder = JSONEncoder()
+        do {
+            let body = try encoder.encode(body)
+            request.httpBody = body
+        } catch {
+            DispatchQueue.main.async {
+                completion(nil, error)
+            }
+            return
+        }
+        
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+//                let newData = data.subdata(in: 5..<data.count)
+                let objectResponse = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(objectResponse, nil)
+                }
+            } catch {
+                do {
+//                    let newData = data.subdata(in: 5..<data.count)
+                    let errorObject = try decoder.decode(ErrorResponse.self, from: data)
                     DispatchQueue.main.async {
                         completion(nil, errorObject)
                     }
