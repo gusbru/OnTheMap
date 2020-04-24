@@ -141,7 +141,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
     }
     
     private func showAlertFailure(message: String) {
-        let alertViewController = UIAlertController(title: "Login Error", message: message, preferredStyle: .alert)
+        let alertViewController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alertViewController, animated: true, completion: nil)
     }
