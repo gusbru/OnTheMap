@@ -25,6 +25,7 @@
 		75688B4424523C5600B302AF /* StudentClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75688B4324523C5600B302AF /* StudentClient.swift */; };
 		75688B462452450200B302AF /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75688B452452450200B302AF /* Student.swift */; };
 		75688B482452483300B302AF /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75688B472452483300B302AF /* StudentModel.swift */; };
+		75BC258324536E8100AC4EA8 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC258224536E8100AC4EA8 /* ErrorResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		75688B4324523C5600B302AF /* StudentClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentClient.swift; sourceTree = "<group>"; };
 		75688B452452450200B302AF /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		75688B472452483300B302AF /* StudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentModel.swift; sourceTree = "<group>"; };
+		75BC258224536E8100AC4EA8 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				75688B3D24523B0100B302AF /* LoginResponse.swift */,
 				75688B4024523BE000B302AF /* StudentInformationResponse.swift */,
 				75688B452452450200B302AF /* Student.swift */,
+				75BC258224536E8100AC4EA8 /* ErrorResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				751E77BC244FE83C00BDF84E /* LoginViewController.swift in Sources */,
 				75688B462452450200B302AF /* Student.swift in Sources */,
 				751E77D8244FF69600BDF84E /* MapNavigationController.swift in Sources */,
+				75BC258324536E8100AC4EA8 /* ErrorResponse.swift in Sources */,
 				751E77D4244FF2E000BDF84E /* FriendsTableViewController.swift in Sources */,
 				751E77B8244FE83C00BDF84E /* AppDelegate.swift in Sources */,
 				751E77D1244FF2C600BDF84E /* MapViewController.swift in Sources */,

@@ -8,6 +8,23 @@
 
 import Foundation
 
-struct LoginRequest: Codable {
-    
+struct Udacity: Codable {
+    var username: String
+    var password: String
 }
+
+struct LoginRequest: Codable {
+    var udacity: Udacity
+}
+
+/*
+ 
+ {
+     "udacity": {
+         "username": "email",
+         "password": "password"
+         
+     }
+ }
+ 
+ */
