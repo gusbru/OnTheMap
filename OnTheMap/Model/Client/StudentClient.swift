@@ -178,6 +178,8 @@ class StudentClient {
         task.resume()
     }
     
+    // it was necessary to copy almost the same function because the response
+    // from the server has weird characters for login
     private class func taskForPOSTRequest2<RequestType: Encodable, ResponseType: Decodable>(url: URL, body: RequestType, reponseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
         
         var request = URLRequest(url: url)
@@ -228,6 +230,10 @@ class StudentClient {
         }
         
         task.resume()
+    }
+    
+    class func taskForDelete<RequestType: Encodable>(url: URL, ) {
+        
     }
     
 }

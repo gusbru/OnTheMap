@@ -69,5 +69,14 @@ class FriendsTableViewController: UITableViewController {
         alertViewController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alertViewController, animated: true, completion: nil)
     }
-
+    
+    @IBAction func logout(_ sender: Any) {
+    }
+    
+    @IBAction func reloadTable(_ sender: Any) {
+    }
+    
+    @IBAction func addNewLocation(_ sender: Any) {
+    }
+    
 }

@@ -176,4 +176,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
         
     }
     
+    @IBAction func logout(_ sender: Any) {
+        print("exit map")
+//        navigationController?.popToRootViewController(animated: true)
+//        print(navigationController!.viewControllers.count)
+        let loginViewController = (self.storyboard?.instantiateViewController(identifier: "LoginViewController")) as! LoginViewController
+        
+        navigationController?.pushViewController(loginViewController, animated: true)
+    }
+    
 }
