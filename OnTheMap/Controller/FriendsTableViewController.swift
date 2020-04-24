@@ -18,6 +18,11 @@ class FriendsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.title = "Students List"
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow.right.arrow.left.square"), style: .plain, target: self, action: nil)
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "mappin.circle"), style: .plain, target: self, action: nil)
+        
     }
 
     // MARK: - Table view data source

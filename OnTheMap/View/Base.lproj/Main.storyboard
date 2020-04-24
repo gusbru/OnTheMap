@@ -57,7 +57,7 @@
                                 <action selector="insertPin:" destination="byQ-a5-ZI7" id="iWO-R6-0Fh"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.clockwise" catalog="system" id="wlL-vh-orJ">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.right.arrow.left.square" catalog="system" id="wlL-vh-orJ">
                             <connections>
                                 <action selector="reloadMap:" destination="byQ-a5-ZI7" id="fBq-dR-VZr"/>
                             </connections>
@@ -258,7 +258,10 @@
                             <outlet property="delegate" destination="OqS-fo-JHa" id="9bf-w1-B2A"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="t7Q-Gc-b5O"/>
+                    <navigationItem key="navigationItem" id="t7Q-Gc-b5O">
+                        <barButtonItem key="leftBarButtonItem" image="mappin.circle" catalog="system" id="TJ7-kF-wgt"/>
+                        <barButtonItem key="rightBarButtonItem" image="arrow.right.arrow.left.square" catalog="system" id="aEh-z7-LqE"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2m-jg-DAL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -421,7 +424,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="arrow.right.arrow.left.square" catalog="system" width="128" height="114"/>
         <image name="clear.fill" catalog="system" width="128" height="114"/>
         <image name="icon_pin" width="24" height="24"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
