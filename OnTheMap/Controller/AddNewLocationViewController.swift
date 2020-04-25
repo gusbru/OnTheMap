@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class AddNewLocationViewController: UIViewController, MKMapViewDelegate {
+class AddNewLocationViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
@@ -35,6 +35,9 @@ class AddNewLocationViewController: UIViewController, MKMapViewDelegate {
         submitButton.isEnabled = false
         
         originalMapRegion = self.mapView.region
+        
+        // delegate
+        inputTextField.delegate = self
         
     }
 
@@ -136,6 +139,12 @@ class AddNewLocationViewController: UIViewController, MKMapViewDelegate {
         mapView.setRegion(originalMapRegion!, animated: true)
         inputTextField.text = ""
         submitButton.isEnabled = false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        inputTextField.resignFirstResponder()
+        
+        return true
     }
     
     

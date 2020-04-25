@@ -101,24 +101,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="srP-g7-wF2">
-                                <rect key="frame" x="0.0" y="164.5" width="414" height="591.5"/>
+                                <rect key="frame" x="0.0" y="211" width="414" height="591.5"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfl-BJ-bur">
-                                <rect key="frame" x="325" y="787" width="49" height="30"/>
+                                <rect key="frame" x="183" y="798" width="49" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitButton:" destination="2Yo-4V-kqt" eventType="touchUpInside" id="SlU-wd-J2P"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaA-Ur-at8">
-                                <rect key="frame" x="40" y="787" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="cancelButton:" destination="2Yo-4V-kqt" eventType="touchUpInside" id="lrZ-hY-JVH"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAo-yk-3yM">
-                                <rect key="frame" x="309" y="85" width="85" height="30"/>
+                                <rect key="frame" x="165" y="164" width="85" height="30"/>
                                 <state key="normal" title="Find on Map"/>
                                 <connections>
                                     <action selector="findOnMapButton:" destination="2Yo-4V-kqt" eventType="touchUpInside" id="ROH-45-yrk"/>
@@ -150,19 +143,26 @@
                                     <action selector="removeSelectedLocation:" destination="2Yo-4V-kqt" eventType="touchUpInside" id="pL6-8s-24G"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GaA-Ur-at8">
+                                <rect key="frame" x="346" y="65" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButton:" destination="2Yo-4V-kqt" eventType="touchUpInside" id="lrZ-hY-JVH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="qeT-xg-unI" firstAttribute="bottom" secondItem="GaA-Ur-at8" secondAttribute="bottom" constant="45" id="0b6-58-dh8"/>
-                            <constraint firstItem="qeT-xg-unI" firstAttribute="bottom" secondItem="wfl-BJ-bur" secondAttribute="bottom" constant="45" id="2BM-Un-h6J"/>
-                            <constraint firstItem="GaA-Ur-at8" firstAttribute="top" secondItem="srP-g7-wF2" secondAttribute="bottom" constant="31" id="2vu-58-5SR"/>
+                            <constraint firstItem="qeT-xg-unI" firstAttribute="bottom" secondItem="GaA-Ur-at8" secondAttribute="bottom" constant="767" id="0b6-58-dh8"/>
+                            <constraint firstItem="qeT-xg-unI" firstAttribute="bottom" secondItem="wfl-BJ-bur" secondAttribute="bottom" constant="34" id="2BM-Un-h6J"/>
+                            <constraint firstItem="GaA-Ur-at8" firstAttribute="top" secondItem="srP-g7-wF2" secondAttribute="bottom" constant="-737.5" id="2vu-58-5SR"/>
                             <constraint firstItem="hEi-lT-bwo" firstAttribute="centerX" secondItem="2NM-iA-WoL" secondAttribute="centerX" id="A5c-OF-kiO"/>
                             <constraint firstItem="v8T-yq-HaD" firstAttribute="top" secondItem="uZm-as-V3Z" secondAttribute="bottom" constant="24.5" id="BIZ-zE-dKP"/>
                             <constraint firstItem="Hko-dU-oDu" firstAttribute="top" secondItem="uZm-as-V3Z" secondAttribute="bottom" constant="24.5" id="HuV-44-oyH"/>
-                            <constraint firstItem="GaA-Ur-at8" firstAttribute="leading" secondItem="qeT-xg-unI" secondAttribute="leading" constant="40" id="Jsx-7d-kwM"/>
-                            <constraint firstItem="qeT-xg-unI" firstAttribute="trailing" secondItem="KAo-yk-3yM" secondAttribute="trailing" constant="20" id="NSF-ob-HEd"/>
+                            <constraint firstItem="GaA-Ur-at8" firstAttribute="leading" secondItem="qeT-xg-unI" secondAttribute="leading" constant="346" id="Jsx-7d-kwM"/>
+                            <constraint firstItem="qeT-xg-unI" firstAttribute="trailing" secondItem="KAo-yk-3yM" secondAttribute="trailing" constant="164" id="NSF-ob-HEd"/>
                             <constraint firstItem="qeT-xg-unI" firstAttribute="trailing" secondItem="uZm-as-V3Z" secondAttribute="trailing" constant="20" id="OgX-ML-EgW"/>
-                            <constraint firstItem="wfl-BJ-bur" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GaA-Ur-at8" secondAttribute="trailing" constant="8" symbolic="YES" id="Q3L-OH-xff"/>
+                            <constraint firstItem="wfl-BJ-bur" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GaA-Ur-at8" secondAttribute="trailing" constant="-211" id="Q3L-OH-xff"/>
                             <constraint firstItem="uZm-as-V3Z" firstAttribute="leading" secondItem="qeT-xg-unI" secondAttribute="leading" constant="20" id="Qfw-J8-Y9q"/>
                             <constraint firstItem="uZm-as-V3Z" firstAttribute="top" secondItem="gAb-py-B3F" secondAttribute="bottom" constant="9" id="SJK-iQ-aUY"/>
                             <constraint firstItem="srP-g7-wF2" firstAttribute="leading" secondItem="qeT-xg-unI" secondAttribute="leading" id="aB5-vo-Meh"/>
@@ -170,12 +170,12 @@
                             <constraint firstItem="hEi-lT-bwo" firstAttribute="centerY" secondItem="2NM-iA-WoL" secondAttribute="centerY" id="fVg-xG-fFD"/>
                             <constraint firstItem="v8T-yq-HaD" firstAttribute="leading" secondItem="qeT-xg-unI" secondAttribute="leading" constant="20" id="gOh-ox-Hoz"/>
                             <constraint firstItem="qeT-xg-unI" firstAttribute="trailing" secondItem="Hko-dU-oDu" secondAttribute="trailing" constant="20" id="rQq-tQ-A3R"/>
-                            <constraint firstItem="srP-g7-wF2" firstAttribute="top" secondItem="uZm-as-V3Z" secondAttribute="bottom" constant="8" id="rSV-Bl-f3x"/>
-                            <constraint firstItem="qeT-xg-unI" firstAttribute="trailing" secondItem="wfl-BJ-bur" secondAttribute="trailing" constant="40" id="rxd-e0-a3t"/>
-                            <constraint firstItem="KAo-yk-3yM" firstAttribute="top" secondItem="qeT-xg-unI" secondAttribute="top" constant="41" id="s71-Ax-PNN"/>
+                            <constraint firstItem="srP-g7-wF2" firstAttribute="top" secondItem="uZm-as-V3Z" secondAttribute="bottom" constant="54.5" id="rSV-Bl-f3x"/>
+                            <constraint firstItem="qeT-xg-unI" firstAttribute="trailing" secondItem="wfl-BJ-bur" secondAttribute="trailing" constant="182" id="rxd-e0-a3t"/>
+                            <constraint firstItem="KAo-yk-3yM" firstAttribute="top" secondItem="qeT-xg-unI" secondAttribute="top" constant="120" id="s71-Ax-PNN"/>
                             <constraint firstItem="Hko-dU-oDu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="v8T-yq-HaD" secondAttribute="trailing" constant="8" symbolic="YES" id="vvN-wu-ibN"/>
                             <constraint firstItem="gAb-py-B3F" firstAttribute="leading" secondItem="qeT-xg-unI" secondAttribute="leading" constant="20" id="xo9-6t-vYW"/>
-                            <constraint firstItem="KAo-yk-3yM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gAb-py-B3F" secondAttribute="trailing" constant="8" symbolic="YES" id="y0f-5A-dUE"/>
+                            <constraint firstItem="KAo-yk-3yM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gAb-py-B3F" secondAttribute="trailing" constant="-78.5" id="y0f-5A-dUE"/>
                             <constraint firstItem="srP-g7-wF2" firstAttribute="trailing" secondItem="qeT-xg-unI" secondAttribute="trailing" id="yJp-TC-AS4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qeT-xg-unI"/>
