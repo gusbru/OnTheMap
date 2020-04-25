@@ -110,9 +110,12 @@ class AddNewLocationViewController: UIViewController, MKMapViewDelegate {
                 return
             }
             
-            // TODO: need to reload the map
-            MapViewController.addAnnotation(student: StudentModel.studentsList.last!, mapView: self.parentMapView!)
-            self.parentMapView!.reloadInputViews()
+            // reload the parent map if called from the map
+            if let parentMapView = self.parentMapView {
+                MapViewController.addAnnotation(student: StudentModel.studentsList.last!, mapView: self.parentMapView!)
+                parentMapView.reloadInputViews()
+            }
+            
             self.dismiss(animated: true, completion: nil)
         }
     }

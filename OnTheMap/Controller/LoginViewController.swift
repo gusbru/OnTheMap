@@ -78,6 +78,9 @@ class LoginViewController: UIViewController {
     }
     
 
-
+    @IBAction func signUp(_ sender: Any) {
+        UIApplication.shared.open(StudentClient.Endpoints.udacityHome.url)
+    }
+    
 }
 

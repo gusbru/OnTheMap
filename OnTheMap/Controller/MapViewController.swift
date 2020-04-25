@@ -143,46 +143,52 @@ class MapViewController: UIViewController, MKMapViewDelegate, UIGestureRecognize
         self.present(alertViewController, animated: true, completion: nil)
     }
     
-    // MARK: - Gestures
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        print("==============================> tap")
-        return !(touch.view is MKPinAnnotationView)
-//        return true
+    @IBAction func logout(_ sender: Any) {
+        setLoadingStatus(isLoading: true)
+        StudentClient.logout { (success, error) in
+            if success {
+                let loginViewController = (self.storyboard?.instantiateViewController(identifier: "LoginViewController")) as! LoginViewController
+                self.navigationController?.pushViewController(loginViewController, animated: true)
+            }
+            
+            if let error = error {
+                self.setLoadingStatus(isLoading: false)
+                self.showAlertFailure(message: error.localizedDescription)
+            }
+        }
     }
     
     
-    @objc func handleTap(gestureRecognizer: UILongPressGestureRecognizer) {
-        if gestureRecognizer.state == .began {
-            
-            let location = gestureRecognizer.location(in: mapView)
-            let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
-            
-            // Add annotation:
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "Title"
-            annotation.subtitle = "Subtitle"
-            
-            mapView.addAnnotation(annotation)
-            
-            print("loooong tap")
-            print(coordinate.latitude)
-            print(coordinate.longitude)
-            print(mapView.annotations.count)
-            print("-----------")
+    // MARK: - Gestures
+        
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+            print("==============================> tap")
+            return !(touch.view is MKPinAnnotationView)
+    //        return true
         }
         
         
-    }
-    
-    @IBAction func logout(_ sender: Any) {
-        print("exit map")
-//        navigationController?.popToRootViewController(animated: true)
-//        print(navigationController!.viewControllers.count)
-        let loginViewController = (self.storyboard?.instantiateViewController(identifier: "LoginViewController")) as! LoginViewController
-        
-        navigationController?.pushViewController(loginViewController, animated: true)
-    }
-    
+        @objc func handleTap(gestureRecognizer: UILongPressGestureRecognizer) {
+            if gestureRecognizer.state == .began {
+                
+                let location = gestureRecognizer.location(in: mapView)
+                let coordinate = mapView.convert(location, toCoordinateFrom: mapView)
+                
+                // Add annotation:
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = "Title"
+                annotation.subtitle = "Subtitle"
+                
+                mapView.addAnnotation(annotation)
+                
+                print("loooong tap")
+                print(coordinate.latitude)
+                print(coordinate.longitude)
+                print(mapView.annotations.count)
+                print("-----------")
+            }
+            
+            
+        }
 }

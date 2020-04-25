@@ -13,25 +13,17 @@ class FriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.navigationItem.title = "Students List"
 
-        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return StudentModel.studentsList.count
     }
 
@@ -71,12 +63,35 @@ class FriendsTableViewController: UITableViewController {
     }
     
     @IBAction func logout(_ sender: Any) {
+        StudentClient.logout { (success, error) in
+            if success {
+                let loginViewController = (self.storyboard?.instantiateViewController(identifier: "LoginViewController")) as! LoginViewController
+                self.navigationController?.pushViewController(loginViewController, animated: true)
+            }
+            
+            if let error = error {
+                self.displayAlert(message: error.localizedDescription)
+            }
+        }
     }
     
     @IBAction func reloadTable(_ sender: Any) {
+        StudentClient.getStudentList { (response, error) in
+            if let response = response {
+                StudentModel.studentsList = response.studentsList
+                self.tableView.reloadData()
+            }
+            
+            if let error = error {
+                self.displayAlert(message: error.localizedDescription)
+            }
+        }
     }
     
     @IBAction func addNewLocation(_ sender: Any) {
+        let addNewLocationViewController = self.storyboard?.instantiateViewController(identifier: "AddNewLocation") as! AddNewLocationViewController
+        
+        present(addNewLocationViewController, animated: true, completion: nil)
     }
     
 }

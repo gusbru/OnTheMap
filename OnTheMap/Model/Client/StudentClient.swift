@@ -26,7 +26,9 @@ class StudentClient {
         
         case getStudentsLocation
         case login
+        case logout
         case postLocation
+        case udacityHome
         
         var stringVaue: String {
             switch self {
@@ -34,8 +36,12 @@ class StudentClient {
                 return "\(Endpoints.base)/StudentLocation?order=-updatedAt&limit=100"
             case .login:
                 return "\(Endpoints.base)/session"
+            case .logout:
+                return "\(Endpoints.base)/session"
             case .postLocation:
                 return "\(Endpoints.base)/StudentLocation"
+            case .udacityHome:
+                return "https://www.udacity.com"
             }
         }
         
@@ -96,6 +102,19 @@ class StudentClient {
             }
         }
         
+    }
+    
+    class func logout(completion: @escaping (Bool, Error?) -> Void) {
+        taskForDelete(url: Endpoints.logout.url, responseType: LogoutResponse.self) { (response, error) in
+            if let error = error {
+                completion(false, error)
+                return
+            }
+            
+            if response != nil {
+                completion(true, nil)
+            }
+        }
     }
     
     
@@ -232,7 +251,43 @@ class StudentClient {
         task.resume()
     }
     
-    class func taskForDelete<RequestType: Encodable>(url: URL, ) {
+    private class func taskForDelete<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+        
+        var request = URLRequest(url: Endpoints.logout.url)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        
+        for cookie in sharedCookieStorage.cookies! {
+          if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        
+        if let xsrfCookie = xsrfCookie {
+          request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            do {
+                let newData = data.subdata(in: 5..<data.count)
+                let objectResponse = try decoder.decode(ResponseType.self, from: newData)
+                DispatchQueue.main.async {
+                    completion(objectResponse, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
+        }
+        task.resume()
         
     }
     

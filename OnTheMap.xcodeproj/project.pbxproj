@@ -28,6 +28,7 @@
 		75BC258324536E8100AC4EA8 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC258224536E8100AC4EA8 /* ErrorResponse.swift */; };
 		75BC258524538E4E00AC4EA8 /* PostLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC258424538E4E00AC4EA8 /* PostLocationResponse.swift */; };
 		75BC258724538E9C00AC4EA8 /* PostLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC258624538E9C00AC4EA8 /* PostLocationRequest.swift */; };
+		75BC25892453B5F000AC4EA8 /* LogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75BC25882453B5F000AC4EA8 /* LogoutResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		75BC258224536E8100AC4EA8 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		75BC258424538E4E00AC4EA8 /* PostLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationResponse.swift; sourceTree = "<group>"; };
 		75BC258624538E9C00AC4EA8 /* PostLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationRequest.swift; sourceTree = "<group>"; };
+		75BC25882453B5F000AC4EA8 /* LogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				75688B452452450200B302AF /* Student.swift */,
 				75BC258224536E8100AC4EA8 /* ErrorResponse.swift */,
 				75BC258424538E4E00AC4EA8 /* PostLocationResponse.swift */,
+				75BC25882453B5F000AC4EA8 /* LogoutResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75BC25892453B5F000AC4EA8 /* LogoutResponse.swift in Sources */,
 				75688B4424523C5600B302AF /* StudentClient.swift in Sources */,
 				75688B4124523BE000B302AF /* StudentInformationResponse.swift in Sources */,
 				75688B392451418D00B302AF /* AddNewLocationViewController.swift in Sources */,

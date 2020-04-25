@@ -370,6 +370,9 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
+                                        <connections>
+                                            <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sue-bi-c9X"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
